@@ -9,8 +9,7 @@ namespace TestApplication.Models
     {
         public virtual int ID { get; set; }
         public virtual string TName { get; set; }
-        public virtual List<Student> Students { get; set; }
-        public virtual List<Semester> Semesters { get; set; }
+     
         // This is a test
     }
 }

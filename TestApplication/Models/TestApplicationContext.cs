@@ -26,5 +26,7 @@ namespace TestApplication.Models
         public System.Data.Entity.DbSet<TestApplication.Models.Student> Students { get; set; }
 
         public System.Data.Entity.DbSet<TestApplication.Models.Semester> Semesters { get; set; }
+
+        public System.Data.Entity.DbSet<TestApplication.Models.Grades> Grades { get; set; }
     }
 }

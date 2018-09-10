@@ -14,6 +14,12 @@
         <th>
             @Html.DisplayNameFor(model => model.SemesterName)
         </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TeacherID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.StudentID)
+        </th>
         <th></th>
     </tr>
 
@@ -21,6 +27,12 @@
     <tr>
         <td>
             @Html.DisplayFor(modelItem => item.SemesterName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TeacherID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.StudentID)
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |

@@ -16,9 +16,8 @@ namespace TestApplication.Controllers
 
         // GET: Classes
         public ActionResult Index()
-       {
-            var classes = db.Classes.Include( t => t.Students).Include(t => t.StudentsID).Include(t => t.Teacher).Include(t=>t.TeacherID);       //(@ => @.Teacher);
-            return View(classes.ToList());
+        {
+            return View(db.Classes.ToList());
         }
 
         // GET: Classes/Details/5
@@ -39,7 +38,6 @@ namespace TestApplication.Controllers
         // GET: Classes/Create
         public ActionResult Create()
         {
-            ViewBag.TeacherID = new SelectList(db.Teachers, "ID", "TName");
             return View();
         }
 
@@ -48,7 +46,7 @@ namespace TestApplication.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ID,TeacherID")] Class @class)
+        public ActionResult Create([Bind(Include = "ID,TeacherID,StudentID")] Class @class)
         {
             if (ModelState.IsValid)
             {
@@ -57,7 +55,6 @@ namespace TestApplication.Controllers
                 return RedirectToAction("Index");
             }
 
-            ViewBag.TeacherID = new SelectList(db.Teachers, "ID", "TName", @class.TeacherID);
             return View(@class);
         }
 
@@ -73,7 +70,6 @@ namespace TestApplication.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.TeacherID = new SelectList(db.Teachers, "ID", "TName", @class.TeacherID);
             return View(@class);
         }
 
@@ -82,7 +78,7 @@ namespace TestApplication.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ID,TeacherID")] Class @class)
+        public ActionResult Edit([Bind(Include = "ID,TeacherID,StudentID")] Class @class)
         {
             if (ModelState.IsValid)
             {
@@ -90,7 +86,6 @@ namespace TestApplication.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.TeacherID = new SelectList(db.Teachers, "ID", "TName", @class.TeacherID);
             return View(@class);
         }
 
